@@ -28,7 +28,8 @@ pipeline {
                // withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASSWORD')]){}                    
                     sh 'chmod +x ./ci/04-push.sh && ./ci/04-push.sh'
                     slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"   
-                    slackSend channel: '#jenkins', message: "Release ${env.RELEASE}, success: ${currentBuild.fullDisplayName}."
+                    slackSend channel: '#jenkins',
+                              message: "Release ${env.RELEASE}, success: ${currentBuild.fullDisplayName}."
             }
         }
     }
