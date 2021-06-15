@@ -27,7 +27,7 @@ pipeline {
                 // withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {  }                    
                     sh '''
                       # docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-                      docker image push sixeyed/pi-psod
+                      docker image push ljupchokostic/jenkins:docker
                     '''
                     slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"                
             }
